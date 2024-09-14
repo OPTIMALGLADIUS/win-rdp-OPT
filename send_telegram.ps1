@@ -19,5 +19,5 @@ foreach ($key in $PSBoundParameters.keys) {
 }
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
-$Response = Invoke-RestMethod -Uri "https://api.telegram.org/bot$($Telegramtoken)/sendMessage?chat_id=$($Telegramchatid)&text=$($Message)"
+$Response = Invoke-RestMethod -Uri "https://api.telegram.org/bot($Telegramtoken)/sendMessage?chat_id=($Telegramchatid)&text=($Message)"
 Write-Host $Response
