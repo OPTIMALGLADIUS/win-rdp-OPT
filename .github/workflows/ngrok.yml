@@ -31,7 +31,7 @@ jobs:
       run: |
            Start-Process -FilePath ".\ngrok\ngrok.exe" -ArgumentList "tcp 3389 -region ${{ secrets.NGROK_REGION }}"
            Start-Sleep -s 30
-           $Response = ConvertFrom-Json(Invoke-WebRequest -Uri "http://127.0.0.1:8080/api/tunnels")
+           $Response = ConvertFrom-Json(Invoke-WebRequest -Uri "http://127.0.0.1:80/api/tunnels")
            Start-Sleep -s 1
            $URLString = $Response.tunnels.public_url
            if($URLString) { C:\send_telegram.ps1 ${{ secrets.TG_TOKEN }} ${{ secrets.TG_CHAT_ID }} ($URLString -split "tcp://")[1]}
